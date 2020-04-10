@@ -13,7 +13,7 @@ body {
 
 .title {
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     font-size: 88px;
     font-weight: bold;
     color: #333;
@@ -25,10 +25,10 @@ body {
 .search-container {
     border-radius: 30px;
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     top: 230px;
     left: 100px;
-    width: 400px;
+    width: 445px;
     height: 60px;
     background-color: #454E53;
     display: flex;

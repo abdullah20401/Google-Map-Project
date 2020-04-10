@@ -9,18 +9,198 @@ var markers = [];
 var infoWindow;
 
 function initMap() {
+    var darkMapType = new google.maps.StyledMapType([
+        {
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#242f3e"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#746855"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#242f3e"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#d59563"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#d59563"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#263c3f"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#6b9a76"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#38414e"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#212a37"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#9ca5b3"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#746855"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#1f2835"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#f3d19c"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#2f3948"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#d59563"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#17263c"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#515c6d"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#17263c"
+            }
+            ]        
+        },
+      ],
+      {name: 'Dark Mode'});
     var losAngeles = {
         lat: 34.063380,
         lng: -118.358080
     };
+
     map = new google.maps.Map(document.getElementById('map'), {
         center: losAngeles,
         zoom: 11,
         mapTypeId: 'roadmap',
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'Dark Mode']
+        }
     });
+
+    map.mapTypes.set('Dark Mode', darkMapType);
+    map.setMapTypeId('Dark Mode');
+
+    colorChanger()
+    
     
     infoWindow = new google.maps.InfoWindow();
     searchStores()
+}
+
+function colorChanger() {
+    if (map.mapTypeId == 'Dark Mode') {
+        document.getElementById('title').style.color = "white";
+    } else {
+        document.getElementById('title').style.color = "#333";
+    }
 }
 
 function searchStores() {
@@ -106,6 +286,7 @@ function showStoresMarkers(stores) {
 }
 
 function createMarker(latlng, name, address, openStatusText, phoneNumber, index) {
+  
     var html = `
     <div class="store-info-window">
         <div class="store-info-name">
@@ -118,7 +299,10 @@ function createMarker(latlng, name, address, openStatusText, phoneNumber, index)
             <div class="circle">
                 <i class="fas fa-location-arrow"></i>
             </div>
+            <div id="addressLink">
             ${address}
+            </div>
+            
         </div>
         <div class="store-info-phone">
             <div class="circle">
@@ -129,10 +313,21 @@ function createMarker(latlng, name, address, openStatusText, phoneNumber, index)
     </div>
     `;
 
+    var image = {
+        url: 'image/starbucks_icon.png',
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(100, 85),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(17, -12),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(0, 32)
+    };
+    
     var marker = new google.maps.Marker({
       map: map,
       position: latlng,
-      label: index.toString()
+      label: index.toString(),
+      icon: image
     });
     google.maps.event.addListener(marker, 'click', function() {
       infoWindow.setContent(html);

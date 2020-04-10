@@ -1,5 +1,5 @@
-# Plan Of Action forr Google Maps Challenge
- 4/7/20
+# Plan Of Action for Google Maps Challenge
+4/7/20
 
 - Create Wireframe ✔️
 
@@ -34,7 +34,7 @@ ___
 
 ___
 
- 4/9/20
+4/9/20
 
 - Complete the styling for the marker info window ✔️
 
@@ -42,8 +42,18 @@ ___
 
 - Allow user to seacrh for the stores in a zip code ✔️
 
-- Add a beautiful transition on the hover of an individual store
+- Add a beautiful transition on the hover of an individual store ✔️
 
+___
 
+4/10/20
+
+### Additional Features
+
+- Turn on Dark Mode
+
+- Add a button to turn dark mode on/off
+
+- Configure text to change color when style is changed
 
 ## **DONE**
