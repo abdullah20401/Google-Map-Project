@@ -1,4 +1,5 @@
-# Plan Of Action
+# Plan Of Action forr Google Maps Challenge
+ 4/7/20
 
 - Create Wireframe ✔️
 
@@ -14,7 +15,10 @@
 
 - Add individual store container
 
-__
+
+___
+
+4/8/20
 
 - Style the individual store item in the stores list ✔️
 
@@ -22,8 +26,24 @@ __
 
 - Show the marker based on real word data ✔️
 
-- Show the info window
+- Show the info window ✔️
 
-- MAYBE: Show the info window when you click on the indivdual store
+- MAYBE: Show the info window when you click on the indivdual store ✔️
 
-- MAYBE: Add a beautiful transition on the hover for the individual store
+- MAYBE: Add a beautiful transition on the hover for the individual store ✔️
+
+___
+
+ 4/9/20
+
+- Complete the styling for the marker info window ✔️
+
+- Open the info window marker on store selection in stores list ✔️
+
+- Allow user to seacrh for the stores in a zip code ✔️
+
+- Add a beautiful transition on the hover of an individual store
+
+
+
+## **DONE**
