@@ -314,7 +314,7 @@ function createMarker(latlng, name, address, openStatusText, phoneNumber, index)
     `;
 
     var image = {
-        url: 'image/starbucks_icon.png',
+        url: 'https://mapsl.imfast.io/Starbucks_icon.png',
         // This marker is 20 pixels wide by 32 pixels high.
         size: new google.maps.Size(100, 85),
         // The origin for this image is (0, 0).
